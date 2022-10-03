@@ -29,5 +29,5 @@ You're ready to go :)
 ## Commands for compiling via terminal
 
 - `g++ $filename` - compiles the code and creates exe with name `a`
-- `a` - runs the exe compiled from the previous command
+- `.\a.exe` - runs the exe compiled from the previous command
 - `g++ $filename -o $exefilename` - compiles the code and creates exe with name `exefilename`
