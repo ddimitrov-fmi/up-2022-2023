@@ -1,6 +1,6 @@
 # Материали
 
-**Installing IDE** - Как да инсталирате Visual Studio IDE(Бтв, може да ползвате каквото си искате IDE, ама да не виждаме DEV C++, CodeBlocks, C shell) ?
+**Installing IDE** - Как да инсталирате Visual Studio IDE(Бтв, може да ползвате каквото си искате IDE, ама да не виждаме DEV C++, CodeBlocks, C shell) ? - link for visual studio code - https://www.youtube.com/watch?v=jvg4VtYEhKU
 
 **Debugger** - Що за животно е дебъгерът и как да го опитомите ?
 
