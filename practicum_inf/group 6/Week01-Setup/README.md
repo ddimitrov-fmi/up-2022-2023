@@ -10,7 +10,7 @@ Press **Ctrl + Shift + X** in VSCode to open the extension tab and download the 
 
 [optional]: enable auto formatting  - Open the Settings tab (Ctrl + ,) and search for `format on type` and check the option
 
-## 3) [Install compiler Mingw-w64](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download)
+## 3) [Install compiler MinGW](https://sourceforge.net/projects/mingw/)
 **!!!Important!!!**
 After you have chosen a destination folder for mingw, make sure to copy the path somewhere.
 We will need it for later.
