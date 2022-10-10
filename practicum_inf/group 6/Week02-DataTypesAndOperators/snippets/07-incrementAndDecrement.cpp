@@ -6,7 +6,7 @@ int main ()
     a = a + 1;
 
     int b = 5;
-    b = b + 1;
+    b += 1;
 
     int c = 5;
     c++;

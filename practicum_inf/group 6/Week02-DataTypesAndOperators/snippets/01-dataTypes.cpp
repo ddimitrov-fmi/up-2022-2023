@@ -4,6 +4,7 @@ int main ()
 {
     // Character type
     char ch = 'a'; // At least 8 bits
+    char ch2 = '!', ch3 = '3';
 
     // Integer types (signed)
     short a = 10; // Not smaller thar `char`. At least 16 bits
