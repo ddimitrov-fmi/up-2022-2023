@@ -10,3 +10,5 @@
 | ------------- |:-------------:| :-----:|
 | Email      | vtvelkova@uni-sofia.bg      |   fn82183@g.fmi.uni-sofia.bg |
 | Facebook      | [Veselina Velkova](https://www.facebook.com/profile.php?id=100005986579138) | [Vasilena Krazheva](https://www.facebook.com/vasilena.krazheva) |
+
+[Линк към repo-то на семинара на група 1.](https://github.com/MariaGrozdeva/Introduction_to_programming_FMI)
