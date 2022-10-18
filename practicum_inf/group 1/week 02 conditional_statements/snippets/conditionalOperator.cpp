@@ -1,9 +1,8 @@
-//C++ code demonstrating the syntax of if and if - else if - else operators
-#include<iostream>
+// C++ code demonstrating the syntax of if and if - else if - else operators
+#include <iostream>
 using std::cin;
 using std::cout;
 using std::endl;
-
 
 /*
 if (statement)
@@ -22,48 +21,48 @@ else
 
 int main()
 {
-	int x, y;
+    int x, y;
     cin >> x >> y;
 
-    if ( x > 0 )
+    if (x > 0)
     {
-        if ( y > 0 )
-		{
+        if (y > 0)
+        {
             cout << "First quadrant";
-		}
-        else if ( y < 0 )
-		{
+        }
+        else if (y < 0)
+        {
             cout << "Fourth quadrant";
-		}
+        }
         else
-		{
-            cout << "Oy";
-		}
+        {
+            cout << "Ox";
+        }
     }
-    else if ( x < 0 )
+    else if (x < 0)
     {
-        if ( y > 0 )
-		{
+        if (y > 0)
+        {
             cout << "Second quadrant";
-		}
-        else if ( y < 0 )
-		{
+        }
+        else if (y < 0)
+        {
             cout << "Third quadrant";
-		}
+        }
         else
             cout << "Oy";
     }
     else // x is 0
     {
-        if ( y != 0 )
-		{
+        if (y != 0)
+        {
             cout << "Ox";
-		}
+        }
         else
-		{
+        {
             cout << "O(0, 0)";
-		}
+        }
     }
 
-	return 0;
+    return 0;
 }

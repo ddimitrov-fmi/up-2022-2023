@@ -1,10 +1,10 @@
-#include<iostream>
+#include <iostream>
 
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
 
-/* 
+/*
 Task 6:
     Write a program that reads width and height of a rectangle from the console.
     Print the perimeter and area of the rectangle.

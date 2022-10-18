@@ -5,7 +5,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-int main() {
+int main()
+{
     int a = 5;
     int b = 9;
 

@@ -1,6 +1,6 @@
-#include<iostream>
-using std::cout;
+#include <iostream>
 using std::cin;
+using std::cout;
 using std::endl;
 
 /*
@@ -13,11 +13,11 @@ Bonus task:
 
 int main()
 {
-	int num;
+    int num;
     cin >> num;
 
     // if the number is even (num % 2) = 0
     // if the number is odd (num % 2) = 1
-    cout << num * (num % 2) << endl; 
-	return 0;
+    cout << num * (num % 2) << endl;
+    return 0;
 }
