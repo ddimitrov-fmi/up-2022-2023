@@ -1,12 +1,12 @@
 #define _USE_MATH_DEFINES
-#include<iostream>
-#include<math.h>
+#include <iostream>
+#include <math.h>
 
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
 
-/* 
+/*
 Task 7:
     Write a program that reads the radius of a circle.
     Find the circumference(perimeter) and area of the circle.
@@ -17,17 +17,17 @@ Task 7:
 int main()
 {
     double radius;
-	cout << "Radius: ";
-	cin >> radius;
+    cout << "Radius: ";
+    cin >> radius;
 
-	double circumference = radius * radius * M_PI;
+    double circumference = radius * radius * M_PI;
     double area = 2 * radius * M_PI;
 
-    //Adding 0.5 to round to the nearest integer
+    // Adding 0.5 to round to the nearest integer
     circumference = ((int)(circumference * 100 + 0.5)) / 100.0;
     area = ((int)(area * 100 + 0.5)) / 100.0;
-    
-	cout << "circumference = "<< circumference << "\n";
-	cout << "Area = " << area << endl;
+
+    cout << "circumference = " << circumference << "\n";
+    cout << "Area = " << area << endl;
     return 0;
 }

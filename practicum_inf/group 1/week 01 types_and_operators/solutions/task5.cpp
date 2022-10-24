@@ -1,13 +1,13 @@
-#include<iostream>
+#include <iostream>
 
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
 
-/* 
+/*
 Task 5:
     Write a program that reads a three digit number from the console.
-    Print the reverse number (For example the reverse of 123 is 321).  
+    Print the reverse number (For example the reverse of 123 is 321).
 */
 
 int main()
@@ -15,7 +15,7 @@ int main()
     int num;
     cout << "Enter a three digit number: ";
     cin >> num;
-    
+
     int hundreds = num / 100;
     int tens = (num / 10) % 10;
     int ones = num % 10;

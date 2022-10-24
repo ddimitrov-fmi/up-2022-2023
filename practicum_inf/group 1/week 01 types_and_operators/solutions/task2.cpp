@@ -1,14 +1,14 @@
-#include<iostream>
+#include <iostream>
 
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
 
-/* 
+/*
 Task 2:
-    Read two integer numbers from the console.
-    Swap their values without using a third variable.
-    Print them on the console.
+	Read two integer numbers from the console.
+	Swap their values without using a third variable.
+	Print them on the console.
 */
 
 int main()
@@ -25,7 +25,7 @@ int main()
 	x = x + y;
 	y = x - y;
 	x = x - y;
-	
+
 	cout << "x = " << x << " and y = " << y << endl;
 	return 0;
 }

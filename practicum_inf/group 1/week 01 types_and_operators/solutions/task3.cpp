@@ -1,10 +1,10 @@
-#include<iostream>
+#include <iostream>
 
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
 
-/* 
+/*
 Task 3:
     Read two integer numbers from the console.
     Swap their values without using a third variable.
@@ -19,7 +19,7 @@ int main()
     const int SECONDS_IN_AN_HOUR = SECONDS_IN_A_MINUTE * 60;
     // there are 24 hours in a day
     const int SECONDS_IN_A_DAY = SECONDS_IN_AN_HOUR * 24;
-	
+
     int seconds;
     cout << "Seconds: ";
     cin >> seconds;
@@ -40,5 +40,5 @@ int main()
          << hours << " hours, "
          << minutes << " minutes, "
          << seconds << " seconds" << endl;
-	return 0;
+    return 0;
 }
