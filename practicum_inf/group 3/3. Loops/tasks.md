@@ -136,7 +136,7 @@
 
 ```
 Примерен вход: 26-10-2022 1234
-Примерен изход: The date after 1234 days would be 13-3-2023
+Примерен изход: The date after 1234 days would be 13-3-2026
 
 Примерен вход: 02-09-1658 165245
 Примерен изход: The date after 165245 days would be 5-2-2111
