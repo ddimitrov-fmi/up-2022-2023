@@ -35,14 +35,14 @@ Friday
 - Ако Нели купи повече от 90 далии - 15% отстъпка от крайната цена.
 - Ако Нели купи повече от 80 лалета - 15% отстъпка от крайната цена.
 - Ако Нели купи по-малко от 120 нарциса - цената се оскъпява с 15%.
-- Ако Нели купи по-малко от 80 гладиоли - цената се оскъпява с 20%.
+- Ако Нели купи по-малко от 80 слънчогледи - цената се оскъпява с 20%.
 
 Изведете с подходящо съобщение дали бюджетът им е бил достатъчен, както и колко пари са им останали / не са им достигнали (форматирано до втория знак след десетичната запетая).
 ### Вход:
 ```C++
 Please, enter the budget for their garden: 250
 Please, enter the quantity of flowers Neli wants: 55
-Please, enter the first letter of the type of flowers Neli wants (R, D, T, N, G): R
+Please, enter the first letter of the type of flowers Neli wants (R, D, T, N, S): R
 ```
 
 ### Изход:
@@ -55,7 +55,7 @@ You need 25.00 more leva.
 ```C++
 Please, enter the budget for their garden: 260
 Please, enter the quantity of flowers Neli wants: 88
-Please, enter the first letter of the type of flowers Neli wants (R, D, T, N, G): T
+Please, enter the first letter of the type of flowers Neli wants (R, D, T, N, S): T
 ```
 
 ### Изход:
@@ -68,7 +68,7 @@ You are left with 50.56 leva.
 ```C++
 Please, enter the budget for their garden: 360
 Please, enter the quantity of flowers Neli wants: 119
-Please, enter the first letter of the type of flowers Neli wants (R, D, T, N, G): N
+Please, enter the first letter of the type of flowers Neli wants (R, D, T, N, S): N
 ```
 
 ### Изход:
@@ -180,15 +180,3 @@ Number: 16
 ```C++
 10000
 ```
-
-
-## :star: Бонус задача
-Дадени са координатите на две шах фигури от един и същи вид. Проверете дали за един ход, едната може да вземе другата.
-- 2 кралици ♛
-- 2 коня ♞
-- 2 топа ♜
-- 2 офицера ♝
-
-Примерно:
-- ако са топове, то могат да се вземат за един ход само ако са разположени на един и същи ред или колона
-- ако са офицери, то единият може да вземе другия само ако са диагонално един спрямо друг
