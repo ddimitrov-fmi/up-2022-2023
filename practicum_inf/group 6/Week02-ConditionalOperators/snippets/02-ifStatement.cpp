@@ -9,9 +9,10 @@ int main ()
 
     double a, b, c;
 
-    double test1 = 5.22, test2 = (4.9 + 0.32);
+    // double test1 = 5.22, test2 = (4.9 + 0.32);
 
-    std::cout << std::boolalpha << (test1 == test2) << std::endl;
+    // std::cout << std::boolalpha << (test1 == test2) << std::endl;
+    // std::cout << std::boolalpha << (std::fabs(test1 - test2) < EPS) << std::endl;
 
     std::cin >> a >> b >> c;
 
