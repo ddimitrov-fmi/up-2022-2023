@@ -168,29 +168,20 @@ int main()
 
 int main()
 {
-	int binary;
+	unsigned int binary;
 	std::cin >> binary;
 
-	int binCopy = binary;
-	int len = 0;
+	unsigned int decimal = 0;
+	unsigned int powOfTwo = 1;
 
-	while (binCopy > 0)
+	while (binary > 0)
 	{
-		binCopy /= 10;
-		++len;
-	}
-
-	int result = 0;
-	int powOfTwo = 1;
-    
-	for (int i = 0; i < len; i++)
-	{
-		result += binary % 10 * powOfTwo;
+		decimal += binary % 10 * powOfTwo;
 		binary /= 10;
 		powOfTwo *= 2;
 	}
 
-	std::cout << result;
+	std::cout << decimal;
 }
 ```
 
