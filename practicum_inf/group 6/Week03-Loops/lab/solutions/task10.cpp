@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstddef>
 
 
 int main()
@@ -11,7 +10,6 @@ int main()
         return 1;
     }
 
-    // Note that the number n means the spaces between the stars on first and last row
     int spaces = iterations - 2, offset = 0;
     for (int i = 0; i < iterations; ++i)
     {
