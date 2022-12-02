@@ -522,7 +522,7 @@ void swap(double& x, double& y)
 
 void reverseArray(double* arr, int size)
 {
-	for (int i = 0; i <= size / 2; i++)
+	for (int i = 0; i < size / 2; i++)
 	{
 		swap(arr[i], arr[size - i - 1]);
 	}
