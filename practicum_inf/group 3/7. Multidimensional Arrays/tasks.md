@@ -1051,7 +1051,129 @@ int main()
 <p>
 
 ```cpp
-// Will add later tonight
+#include <iostream>
+#include <cmath>
+
+const int MAX_SIZE = 100;
+
+int moveHero(int princess, int hero, char castle[]);
+
+int main()
+{
+	int rooms = 0;
+	std::cin >> rooms;
+
+	char castle[MAX_SIZE];
+	std::cin >> castle;
+
+	int cleopatra = -1, arthur = -1, dagonet = -1;
+	for (size_t i = 0; i < rooms; i++)
+	{
+		if (castle[i] == 'C')
+		{
+			cleopatra = i;
+		}
+		else if (castle[i] == 'A')
+		{
+			arthur = i;
+		}
+		else if (castle[i] == 'D')
+		{
+			dagonet = i;
+		}
+	}
+
+	if (dagonet == -1 || arthur == -1 || cleopatra == -1)
+	{
+		std::cout << "Wrong castle!" << std::endl;
+		return 0;
+	}
+
+	int dagonetPoints = 0, arthurPoints = 0;
+	if (abs(cleopatra - arthur) < abs(cleopatra - dagonet))
+	{
+		arthurPoints = moveHero(cleopatra, arthur, castle);
+		if (arthurPoints == -1)
+		{
+			std::cout << "Dagonet wins Cleopatra's heart because Arthur was eaten by the dragon Valyrian." << std::endl;
+			return 0;
+		}
+		dagonetPoints = moveHero(cleopatra, dagonet, castle);
+		if (dagonetPoints == -1)
+		{
+			std::cout << "Arthur wins Cleopatra's heart because Dagonet was eaten by the dragon Valyrian." << std::endl;
+			return 0;
+		}
+	}
+	else
+	{
+		dagonetPoints = moveHero(cleopatra, dagonet, castle);
+		if (dagonetPoints == -1)
+		{
+			std::cout << "Arthur wins Cleopatra's heart because Dagonet was eaten by the dragon Valyrian." << std::endl;
+			return 0;
+		}
+		arthurPoints = moveHero(cleopatra, arthur, castle);
+		if (arthurPoints == -1)
+		{
+			std::cout << "Dagonet wins Cleopatra's heart because Arthur was eaten by the dragon Valyrian." << std::endl;
+			return 0;
+		}
+	}
+
+	if (arthurPoints > dagonetPoints)
+	{
+		std::cout << "Arthur wins Cleopatra's heart with " << arthurPoints << " points." << std::endl;
+	}
+	else if (dagonetPoints > arthurPoints)
+	{
+		std::cout << "Dagonet wins Cleopatra's heart with " << dagonetPoints << " points." << std::endl;
+	}
+	else if (dagonetPoints == arthurPoints)
+	{
+		std::cout << "The castle is big enough for the three of them and so they all lived happily ever after!" << std::endl;
+	}
+
+	return 0;
+}
+
+int moveHero(int princess, int hero, char castle[])
+{
+	int points = 0;
+	int rooms = abs(princess - hero);
+	if (princess < hero)
+	{
+		for (int i = hero; i > princess; i--)
+		{
+			switch (castle[i])
+			{
+			case 'V': points = -1; return points;
+			case '~': points += 18; break;
+			case '%': points += 24; break;
+			case '#': points += 35; break;
+			default: break;
+			}
+			castle[i] = '.';
+		}
+	}
+	else
+	{
+		for (int i = hero; i < princess; i++)
+		{
+			switch (castle[i])
+			{
+			case 'V': points = -1; return points;
+			case '~': points += 18; break;
+			case '%': points += 24; break;
+			case '#': points += 35; break;
+			default: break;
+			}
+			castle[i] = '.';
+		}
+	}
+
+	return points;
+}
 ```
 
 </p>
@@ -1067,7 +1189,68 @@ int main()
 <p>
 
 ```cpp
-// Will add later tonight
+#include <iostream>
+
+const int MAX_SIZE = 100;
+
+int main()
+{
+	int rows, cols;
+	char field[MAX_SIZE][MAX_SIZE];
+	std::cin >> rows >> cols;
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			std::cin >> field[i][j];
+		}
+	}
+
+	short xDir, yDir;
+	short currX = 0, currY = 0;
+	int countAt = 0, countX = 0, countAnd = 0;
+
+	do
+	{
+		switch (field[currX][currY])
+		{
+		case 'X': countX++; break;
+		case '&': countAnd++; break;
+		case '@': countAt++; break;
+		default: std::cout << "Invalid input" << std::endl;
+			break;
+		}
+
+		std::cin >> xDir >> yDir; //(1,0)-right, (0,1)-up, (-1,0)-left, (0,-1)-down
+		if ((xDir == 1) && (yDir == 0) && currY < cols - 1)
+		{
+			currY++;
+		}
+		else if ((xDir == 0) && (yDir == 1) && currX > 0)
+		{
+			currX--;
+		}
+		else if ((xDir == -1) && (yDir == 0) && currY > 0)
+		{
+			currY--;
+		}
+		else if ((xDir == 0) && (yDir == -1) && currX < rows - 1)
+		{
+			currX++;
+		}
+		else
+		{
+			std::cout << "Wrong directions. Try again!" << std::endl;
+		}
+	} while ((xDir != 0) || (yDir != 0));
+
+	std::cout << "Count of X: " << countX << std::endl;
+	std::cout << "Count of &: " << countAnd << std::endl;
+	std::cout << "Count of @: " << countAt << std::endl;
+
+	return 0;
+}
 ```
 
 </p>
