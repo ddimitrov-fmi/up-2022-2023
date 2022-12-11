@@ -15,7 +15,7 @@ int atoi(const char *str)
         ++str;
     }
 
-    while (*str) // same as while(*str == '\0')
+    while (*str) // same as while(*str != '\0')
     {
         result = result * 10 + (*str - '0');
         ++str;
