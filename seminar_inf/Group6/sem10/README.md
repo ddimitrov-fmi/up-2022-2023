@@ -17,7 +17,7 @@
 
 ## Задача 4
 
-Да се дефинира функцията __bool commonel (int \*arrays[],int npointers, int arrlengths[])__. Масивът arrays съдържа npointers на брой указатели към масиви от цели числа. i-тият масив има големина arrlengths[i].
+Да се дефинира функцията __bool commonel (int \*arrays[],int npointers, int arrlengths[])__. Масивът arrays съдържа __npointers__ на брой указатели към масиви от цели числа. i-тият масив има големина arrlengths[i].
 Функцията да връща истина, ако има поне едно число x, което е елемент
 на всички масиви.
 
