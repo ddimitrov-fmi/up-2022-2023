@@ -17,7 +17,7 @@ int main ()
 
     const int* maxElement = findMaxElement(array, size);
 
-    if (!maxElement)
+    if (!maxElement) // maxElemeent == nullptr
     {
         std::cout << "Empty array" << std::endl;
     }

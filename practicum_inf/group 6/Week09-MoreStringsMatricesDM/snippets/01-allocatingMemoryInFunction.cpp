@@ -1,6 +1,6 @@
 #include <iostream>
 
-std::size_t allocateArray(int* array);
+std::size_t allocateArray(int*& array);
 
 int main ()
 {
@@ -19,7 +19,7 @@ int main ()
     return 0;
 }
 
-std::size_t allocateArray(int* array)
+std::size_t allocateArray(int*& array)
 {
     std::size_t size;
     std::cin >> size;
