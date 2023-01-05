@@ -49,7 +49,7 @@ size_t findAllPaths(char** maze, size_t rows, size_t cols)
 		{
 			if (maze[i][j] == '^')
 			{
-
+				count = getCountOFAllPaths(maze, rows, cols, i, j);
 			}
 		}
 	}
