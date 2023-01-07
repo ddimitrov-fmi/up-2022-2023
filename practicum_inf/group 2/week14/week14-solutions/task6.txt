@@ -1,0 +1,62 @@
+const int MAX_SIZE = 50;
+
+void inputArray(int *arr, int &size)
+{
+	cout << "Please enter the integers:" << endl;
+	for (int i = 0; i < size; ++i)
+		cin >> arr[i];
+}
+
+void outputArray(int *arr, int &size, int &cntr)
+{
+	cout << "\n\n    Answer: ";
+	for (int i = 0; i < size - cntr; ++i)
+		cout << arr[i] << " ";
+	cout << endl;
+}
+
+int findElement(int *arr, int &size, int &number, int &cntr)
+{
+	for (int i = 0; i < size - cntr; ++i)
+		if (arr[i] == number)
+			return i;
+	return -1;
+}
+
+bool removeElement(int *arr, int &size, int &number, int &cntr)
+{
+	int elementIndex = findElement(arr, size, number, cntr);
+	if (elementIndex < 0)
+		return false;
+	
+	for (int j = elementIndex; j < size - cntr; ++j)
+		arr[j] = arr[j + 1];
+
+	cntr++;
+	
+	if (findElement(arr, size, number, cntr) >= 0)
+		removeElement(arr, size, number, cntr);
+
+	return true;
+}
+
+int main()
+{
+	int arr[MAX_SIZE] = { 0 }, size = -1, removeMe = -1;
+
+	cout << "How many integers do you want the array to hold? ";
+	cin >> size;
+
+	inputArray(arr, size);
+	
+	cout << "Which integer do you want to remove? ";
+	cin >> removeMe;
+
+	int cntr = 0;
+
+	cout << endl << (removeElement(arr, size, removeMe, cntr) == true ? "true" : "false") << endl;
+
+	outputArray(arr, size, cntr);
+
+	return 0;
+}

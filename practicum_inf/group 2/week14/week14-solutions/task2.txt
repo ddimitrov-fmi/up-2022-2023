@@ -1,0 +1,131 @@
+
+void removeElement(char str[]) //Function that shifts any string by one to the left.
+{
+	if (str[0] == '\0')
+	{
+		return;
+	}	
+
+	str[0] = str[1];
+
+	return removeElement(str + 1);
+}
+
+void removeOther(char str[]) //Make any string consist of only letters.
+{
+	if (str[0] == '\0')
+	{
+		return;
+	}		
+
+	if (!(str[0] >= 'a' && str[0] <= 'z'))
+	{
+		removeElement(str);
+		return removeOther(str);
+	}
+	
+	return removeOther(str + 1);
+}
+
+void CapToSmall(char str[]) //Function that transforms every capital letter into a small one for any string.
+{
+	if (str[0] == '\0')
+	{
+		return;
+	}		
+
+	if (str[0] >= 'A' && str[0] <= 'Z')
+	{
+		str[0] = str[0] + ('a' - 'A');
+	}		
+
+	return CapToSmall(str + 1);
+}
+
+int getSize(char str[]) //Function that determines the leght of any string.
+{
+	if (str[0] == '\0')
+	{
+		return 0;
+	}		
+
+	return 1 + getSize(str + 1);
+}
+
+void swap(char &element1, char &element2)
+{
+	char temp = element2;
+	element2 = element1;
+	element1 = temp;
+}
+
+void orderAlpha(char str[]) //Function that orders any letters in ascending alphabetical order.
+{
+	if (str[0] == '\0')
+	{
+		return;
+	}		
+
+	int minIndex = 0;
+
+	for (int i = 1; str[i]; ++i)
+	{
+		if (str[minIndex] > str[i])
+		{
+			minIndex = i;
+		}			
+	}	
+
+	swap(str[0], str[minIndex]);
+
+	return orderAlpha(str + 1);
+}
+
+bool compareHelper(char str1[], char str2[]) // Made it so as to be a bit easier to implemnt recursion.
+{
+	if (str1[0] != str2[0])
+	{
+		return false;
+	}		
+
+	if (str1[0] == '\0' && str2[0] == '\0')
+	{
+		return true;
+	}		
+
+	return compareHelper(str1 + 1, str2 + 1);
+}
+
+bool compare(char str1[], char str2[])
+{
+	CapToSmall(str1);
+	removeOther(str1);
+	CapToSmall(str2);
+	removeOther(str2);
+
+	if (getSize(str1) != getSize(str2))
+	{
+		return false;
+	}		
+
+	orderAlpha(str1);
+	orderAlpha(str2);
+	
+	return compareHelper(str1, str2);
+}
+
+int main()
+{
+	char str1[64] = "";
+	char str2[64] = "";
+
+	cout << "Enter First Sentence: ";
+	cin.getline(str1, 64);
+
+	cout << "Enter Second Sentence: ";
+	cin.getline(str2, 64);
+
+	cout <<"\n    Result: "<< (compare(str1, str2) ? "Anagrams!" : "Not Anagrams") << endl;
+
+    return 0;
+}

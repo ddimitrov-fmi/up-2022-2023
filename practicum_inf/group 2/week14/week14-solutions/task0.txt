@@ -1,0 +1,83 @@
+#include<iostream>
+using namespace std;
+
+int strlen(const char* text) {
+		int i = 0;
+		while(text[i]) {
+  		i++;
+  	}
+  
+  return i;
+}
+
+void strcpy(char* dest, const char* src) //prog\0
+{
+  	int i = 0;
+  	while(src[i]) 
+    {
+      dest[i] = src[i];
+      i++;
+    }
+  dest[i] = '\0';
+}
+
+
+
+int main() 
+{
+	char arr[21], cpyarr[21];
+  int arrCount = 0, cpyarrCount = 0;
+  
+  cin >> arr;
+  arrCount = strlen(arr);
+  
+  
+  bool end = false;
+  while(!end)
+  {
+    cin >> cpyarr;
+    cpyarrCount = strlen(cpyarr);
+    
+    if (arrCount < cpyarrCount)
+    {
+      if (cpyarr[cpyarrCount-1] == '.')
+      {
+        end = true;
+        cpyarr[cpyarrCount-1] == '\0';
+        cpyarrCount--;
+      }
+      strcpy(arr, cpyarr);
+    }
+  }
+
+
+	return 0;
+}
+
+
+/// Logic 2
+/*
+char arr[21], cpyarr[21];
+int n = 0, max = 0, i = 1;
+
+do {
+  cin >> arr;
+  n = strlen(arr);
+  
+  if(arr[n - 1] == '.') {
+    arr[n - 1] = '\0';
+    i = 0;
+    n--;
+  }
+  if(n > max) {
+    max = n;
+    strcpy(cpyarr, arr);
+  }
+} while(i);
+
+cout << cpyarr << endl;
+*/
+///
+
+
+

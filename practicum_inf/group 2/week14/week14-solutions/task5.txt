@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+bool DoesItContains(int number,int k)
+{
+  if(number == 0)
+  {
+    return false;
+  }
+  
+  if(number % 10 == k){
+    return true;
+  }
+
+  return DoesItContains(number / 10, k);
+}
+
+int main() {
+	cout << DoesItContains(1234, 4) << endl;
+  cout << DoesItContains(555, 1) << endl;
+	return 0;
+}

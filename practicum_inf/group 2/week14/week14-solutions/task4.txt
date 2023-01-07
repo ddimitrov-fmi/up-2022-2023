@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+int getNumHelper(char str[], int& answer) {
+  if(str[0] == '\0') {
+    return 0;
+  }
+  if(!(str[0] >= '0' && str[0] <= '9')) {
+    return -1;
+  }
+  
+  answer = answer * 10 + (str[0] - '0');
+  
+  return getNumHelper(str + 1, answer);
+}
+
+int getNumber(char str[]) {
+  int answer = 0;
+  if(getNumHelper(str, answer) == -1) {
+    return -1;
+  }
+  
+  return answer;
+}
+
+
+int main() {
+	char num[] = "123";
+	cout << getNumber(num);
+	return 0;
+}
+
