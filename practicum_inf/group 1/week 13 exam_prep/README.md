@@ -59,5 +59,5 @@ X X X o o o X o o o
 - o - път
 - X - стена
 
-## :three:.:one: Task 2.1 :notebook_with_decorative_cover:
+## :three:.:one: Task 3.1 :notebook_with_decorative_cover:
 Изведете на конзолата пътя от `start` до `end` като последователност от координати.
