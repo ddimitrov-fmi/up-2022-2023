@@ -27,6 +27,40 @@ true
 
 > Бонус задача: Опитайте се да направите нов масив в който да сложите числата от които се образува сбора.
 
+<details><summary><b>Solution</b></summary> 
+<p>
+
+```cpp
+#include <iostream>
+ 
+bool canSum(unsigned int* arr, unsigned int size, int target)
+{
+  if (target < 0)
+      return false;
+
+  if (target == 0)
+      return true;
+
+  for (size_t i = 0; i < size; i++)
+  {
+      if (canSum(arr, size, target - arr[i]))
+          return true;
+  }
+  
+  return false;
+}
+
+int main()
+{
+  unsigned int arr[3] = { 2, 4 };
+
+  std::cout << std::boolalpha << canSum(arr, 2, 6);
+}
+```
+
+</p>
+</details>
+
 ## Задача 1
 Напишете фунция, която обръща думите в даден низ. Под дума ще разбираме всяка последователност от малки или главни английски букви. Например "evil rats" да се преобразува в "live star".
 Функцията да не променя подадения низ, а да връща нов, за който да заделя динамична памет.
@@ -40,6 +74,102 @@ true
 Примерен вход: Step on no pets!
 Примерен изход Pets no on step!
 ```
+
+<details><summary><b>Solution</b></summary> 
+<p>
+
+```cpp
+bool isLetter(char c)
+{
+    return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+}
+ 
+void skipToWord(char*& str)
+{
+    while (!isLetter(*str) && *str != '\0')
+        str++;
+}
+ 
+void skipToNextWord(char*& str)
+{
+    while (isLetter(*str) && *str != '\0')
+        str++;
+}
+ 
+int getWordLength(char* str)
+{
+    int length = 0;
+    while (isLetter(*str) && *str != '\0')
+    {
+        length++;
+        str++;
+    }
+ 
+    return length;
+}
+ 
+char* getWord(char*& str)
+{
+    int length = getWordLength(str);
+    char* word = new char[length + 1];
+ 
+    int wordIter = 0;
+    while (isLetter(*str) && *str != '\0' && wordIter < length)
+    {
+        word[wordIter] = *str;
+        wordIter++;
+        str++;
+    }
+ 
+    word[wordIter] = '\0';
+ 
+    return word;
+}
+ 
+char** getSentence(char* str, char* expr, int& currLen)
+{
+    currLen = 0;
+    int sentenceLen = getWordLength(expr);
+    char** sentence = new char*[sentenceLen];
+ 
+    while (*str != '\0' && *expr != '\0')
+    {
+        skipToWord(str);
+ 
+        if (*str == *expr && currLen < sentenceLen)
+        {
+            sentence[currLen] = getWord(str);
+            expr++;
+            currLen++;
+            continue;
+        }
+ 
+        skipToNextWord(str);
+    }
+ 
+    return sentence;
+}
+ 
+int main()
+{
+    char initSentence[] = "Hello this is a very cool sentence";
+    char exprSentence[] = "iac";
+ 
+    int sentences = 0;
+    char** finalSentence = getSentence(initSentence, exprSentence, sentences);
+ 
+    for (int i = 0; i < sentences; i++)
+    {
+        std::cout << finalSentence[i] << " ";
+        delete[] finalSentence[i];
+    }
+    delete[] finalSentence;
+ 
+}
+```
+
+</p>
+</details>
 
 ## Задача 2
 Дума ще наричаме последователност от английски букви (главни или малки). Изречение ще наричаме последователност от думи, разделени с произволни разделители, различни от английски букви (напр. интервал, тире и т.н.)
@@ -117,3 +247,84 @@ He is not there yet
 4
 
 ```
+
+<details><summary><b>Solution</b></summary> 
+<p>
+
+```cpp
+#include <iostream>
+
+void printer(int n, bool* binaryTable)
+{
+	for (int i = 1; i <= n; i++)
+	{
+		std::cout << i << " ";
+
+		if (i < n)
+		{
+			if (binaryTable[i - 1])
+				std::cout << "\n";
+		}
+	}
+}
+
+int powOfTwo(int n)
+{
+	int pow = 1;
+	for (int i = 0; i < n; i++)
+	{
+		pow *= 2;
+	}
+
+	return pow;
+}
+
+void binaryAdvance(int n, bool* binaryTable)
+{
+	if (binaryTable[n - 2] == 1)
+	{
+		int j = n - 2;
+		while (binaryTable[j] == 1 && j >= 0)
+		{
+			binaryTable[j] = 0;
+			j--;
+		}
+
+		binaryTable[j] = 1;
+
+		return;;
+	}
+
+	binaryTable[n - 2] = 1;
+}
+
+void binaryPrint(int n)
+{
+	bool* binaryTable = new bool[n - 1];
+
+	for (int i = 0; i < n-1; i++)
+	{
+		binaryTable[i] = 0;
+	}
+
+	int pow = powOfTwo(n);
+
+
+	for (int i = 0; i < pow; i++)
+	{
+		printer(n, binaryTable);
+		
+		std::cout << "\n\n";
+
+		binaryAdvance(n, binaryTable);
+	}
+}
+
+int main()
+{
+	binaryPrint(4);
+}
+```
+
+</p>
+</details>
