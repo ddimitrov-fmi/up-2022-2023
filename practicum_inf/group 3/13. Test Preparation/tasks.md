@@ -71,7 +71,7 @@ int main()
 ```
 
 ```
-Примерен вход: Step on no pets4r6t
+Примерен вход: Step on no pets
 Примерен изход petS no on step
 ```
 
