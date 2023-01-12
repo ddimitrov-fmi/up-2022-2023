@@ -71,14 +71,176 @@ int main()
 ```
 
 ```
-Примерен вход: Step on no pets!
-Примерен изход Pets no on step!
+Примерен вход: Step on no pets4r6t
+Примерен изход petS no on step
 ```
 
 <details><summary><b>Solution</b></summary> 
 <p>
 
 ```cpp
+bool isLetter(char c)
+{
+	return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+}
+
+void skipToWord(char*& str)
+{
+	while (!isLetter(*str) && *str != '\0')
+		str++;
+}
+
+void skipToNextWord(char*& str)
+{
+	while (isLetter(*str) && *str != '\0')
+		str++;
+}
+
+int getWordLength(char* str)
+{
+	int length = 0;
+	while (isLetter(*str) && *str != '\0')
+	{
+		length++;
+		str++;
+	}
+
+	return length;
+}
+
+void reverse(char* str, int strSize)
+{
+	for (int i = 0; i < strSize / 2; i++)
+	{
+		char temp = str[i];
+		str[i] = str[strSize - i - 1];
+		str[strSize - i - 1] = temp;
+	}
+}
+
+char* getReversedWord(char*& str)
+{
+	int length = getWordLength(str);
+	char* word = new char[length + 1];
+
+	int wordIter = 0;
+	while (isLetter(*str) && *str != '\0' && wordIter < length)
+	{
+		word[wordIter] = *str;
+		wordIter++;
+		str++;
+	}
+
+	word[wordIter] = '\0';
+
+	reverse(word, length);
+
+	return word;
+}
+
+char* combineWords(char** strs, int size)
+{
+	int wordsSize = 0;
+	int spacesCount = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		wordsSize += getWordLength(strs[i]);
+		spacesCount++;
+	}
+
+	int overallSize = wordsSize + spacesCount;
+	char* combinedSentence = new char[overallSize];
+
+	int sentenceIter = 0;
+	for (int i = 0; i < size; i++)
+	{
+		int currWordLength = getWordLength(strs[i]);
+		for (int j = 0; j < currWordLength; j++)
+		{
+			combinedSentence[sentenceIter] = strs[i][j];
+			sentenceIter++;
+		}
+
+		combinedSentence[sentenceIter] = ' ';
+		sentenceIter++;
+	}
+
+	combinedSentence[sentenceIter - 1] = '\0';
+
+	return combinedSentence;
+}
+
+int wordCounter(char* str)
+{
+	int counter = 0;
+	while (*str != '\0')
+	{
+		skipToWord(str);
+		counter++;
+		skipToNextWord(str);
+	}
+
+	return counter;
+}
+
+char* getSentence(char* str)
+{
+	int currLen = 0;
+	int wordsCount = wordCounter(str);
+	char** words = new char* [wordsCount];
+
+	while (*str != '\0')
+	{
+		skipToWord(str);
+		words[currLen] = getReversedWord(str);
+		currLen++;
+	}
+
+	char* sentence = combineWords(words, wordsCount);
+
+	for (int i = 0; i < wordsCount; i++)
+	{
+		delete[] words[i];
+	}
+	delete[] words;
+
+	return sentence;
+}
+
+int main()
+{
+	char initSentence[] = "evil rats";
+	char* finalSentence = getSentence(initSentence);
+
+	std::cout << finalSentence;
+
+	delete[] finalSentence;
+}
+```
+
+</p>
+</details>
+
+## Задача 2
+Дума ще наричаме последователност от английски букви (главни или малки). Изречение ще наричаме последователност от думи, разделени с произволни разделители, различни от английски букви (напр. интервал, тире и т.н.)
+Напишете функция, която по дадено изречение `s` и дадена дума `w` намира първата дума в `s`, която започва с първата буква на `w`, след което намира дума, започваща с втората буква на `w` и намираща се надясно от първата намерена дума и т.н. Накрая функцията да конструира изречение от намерените думи, в което те са разделени с интервали. За новото изречение да бъде заделена динамична памет. Ако за дадена буква не бъде намерена дума, процесът да се прекратява и да се връща до момента полученото изречение.
+
+```
+Примерен вход: 
+But in my opinion, he is not lazy. He is working hard and smart at the same time.
+hilasyt
+
+Примерен изход:
+he is lazy and smart
+```
+
+<details><summary><b>Solution</b></summary> 
+<p>
+
+```cpp
+#include <iostream>
+
 bool isLetter(char c)
 {
     return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
@@ -171,19 +333,6 @@ int main()
 </p>
 </details>
 
-## Задача 2
-Дума ще наричаме последователност от английски букви (главни или малки). Изречение ще наричаме последователност от думи, разделени с произволни разделители, различни от английски букви (напр. интервал, тире и т.н.)
-Напишете функция, която по дадено изречение `s` и дадена дума `w` намира първата дума в `s`, която започва с първата буква на `w`, след което намира дума, започваща с втората буква на `w` и намираща се надясно от първата намерена дума и т.н. Накрая функцията да конструира изречение от намерените думи, в което те са разделени с интервали. За новото изречение да бъде заделена динамична памет. Ако за дадена буква не бъде намерена дума, процесът да се прекратява и да се връща до момента полученото изречение.
-
-```
-Примерен вход: 
-But in my opinion, he is not lazy. He is working hard and smart at the same time.
-hilasyt
-
-Примерен изход:
-he is lazy and smart
-```
-
 ## Задача 3
 Изречение ще наричаме символен низ, състоящ се от думи, съдържащи единствено английски букви (главни или малки), разделени с интервал. Сортирано изречение ще наричаме изречение, в което думите са подредени лексикографски в нарастващ ред, без да се прави разлика между главни и малки букви.
 Да се напише функция, която слива две подадени сортирани изречения, образувайки ново сортирано изречение. За новия низ да бъде заделена динамична памет.
@@ -196,6 +345,157 @@ not yet
 Примерен изход:
 He is not there yet
 ```
+
+<details><summary><b>Solution</b></summary> 
+<p>
+
+```cpp
+#include <iostream>
+
+bool isLetter(char c)
+{
+	return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
+}
+
+void skipToWord(char*& str)
+{
+	while (!isLetter(*str) && *str != '\0')
+		str++;
+}
+
+void skipToNextWord(char*& str)
+{
+	while (isLetter(*str) && *str != '\0')
+		str++;
+}
+
+int getWordLength(char* str)
+{
+	int length = 0;
+	while (isLetter(*str) && *str != '\0')
+	{
+		length++;
+		str++;
+	}
+
+	return length;
+}
+
+char* getWord(char*& str)
+{
+	int length = getWordLength(str);
+	char* word = new char[length + 1];
+
+	int wordIter = 0;
+	while (isLetter(*str) && *str != '\0' && wordIter < length)
+	{
+		word[wordIter] = *str;
+		wordIter++;
+		str++;
+	}
+
+	word[wordIter] = '\0';
+
+	return word;
+}
+
+char* combineWords(char** strs, int size)
+{
+	int wordsSize = 0;
+	int spacesCount = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		wordsSize += getWordLength(strs[i]);
+		spacesCount++;
+	}
+
+	int overallSize = wordsSize + spacesCount;
+	char* combinedSentence = new char[overallSize];
+
+	int sentenceIter = 0;
+	for (int i = 0; i < size; i++)
+	{
+		int currWordLength = getWordLength(strs[i]);
+		for (int j = 0; j < currWordLength; j++)
+		{
+			combinedSentence[sentenceIter] = strs[i][j];
+			sentenceIter++;
+		}
+
+		combinedSentence[sentenceIter] = ' ';
+		sentenceIter++;
+	}
+
+	combinedSentence[sentenceIter - 1] = '\0';
+
+	return combinedSentence;
+}
+
+int wordCounter(char* str)
+{
+	int counter = 0;
+	while (*str != '\0')
+	{
+		skipToWord(str);
+		counter++;
+		skipToNextWord(str);
+	}
+
+	return counter;
+}
+
+char toLower(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+		c += 'a' - 'A';
+
+	return c;
+}
+
+char* combineSorted(char* first, char* second)
+{
+	int wordsCount = wordCounter(first) + wordCounter(second);
+	char** words = new char*[wordsCount];
+
+	for (int i = 0; i < wordsCount; i++)
+	{
+		skipToWord(first);
+		skipToWord(second);
+
+		if (toLower(*first) <= toLower(*second) && *first != '\0')
+			words[i] = getWord(first);
+		else
+			words[i] = getWord(second);
+	}
+
+	char* sortedSentence = combineWords(words, wordsCount);
+
+	for (int i = 0; i < wordsCount; i++)
+	{
+		delete words[i];
+	}
+
+	delete[] words;
+
+	return sortedSentence;
+}
+
+int main()
+{
+	char firstSorted[] = "He is there";
+	char secondSorted[] = "not yet";
+
+	char* sortedSentence = combineSorted(firstSorted, secondSorted);
+
+	std::cout << sortedSentence;
+
+	delete[] sortedSentence;
+}
+```
+
+</p>
+</details>
 
 ## Задача 4
 При въведено естествено число n > 0. 
@@ -279,12 +579,12 @@ int powOfTwo(int n)
 	return pow;
 }
 
-void binaryAdvance(int n, bool* binaryTable)
+void binaryAdvance(bool* binaryTable, int tableSize)
 {
-	if (binaryTable[n - 2] == 1)
+	if (binaryTable[tableSize - 1] == 1)
 	{
-		int j = n - 2;
-		while (binaryTable[j] == 1 && j >= 0)
+		int j = tableSize - 1;
+		while (j >= 1 && binaryTable[j] == 1)
 		{
 			binaryTable[j] = 0;
 			j--;
@@ -292,10 +592,10 @@ void binaryAdvance(int n, bool* binaryTable)
 
 		binaryTable[j] = 1;
 
-		return;;
+		return;
 	}
 
-	binaryTable[n - 2] = 1;
+	binaryTable[tableSize - 1] = 1;
 }
 
 void binaryPrint(int n)
@@ -316,8 +616,10 @@ void binaryPrint(int n)
 		
 		std::cout << "\n\n";
 
-		binaryAdvance(n, binaryTable);
+		binaryAdvance(binaryTable, n - 1);
 	}
+
+	delete[] binaryTable;
 }
 
 int main()
