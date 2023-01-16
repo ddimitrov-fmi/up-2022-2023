@@ -10,9 +10,9 @@
     - цена
     - брой продажби
 
-2. Напишете функция, която прочита въведени стойности и ги задава като стойности на полетата на подаден обект от горния тип.
+2. Напишете функция, която получава стойности и ги задава на полетата на подаден обект от горния тип.
 
-    `void initializeBook(Book& book, const char *title, const char *author, const char *genre, unsigned sales, unsigned price);`
+    `void initializeBook(Book& book, const char *title, const char *author, const char *genre, unsigned sales, double price);`
 
 3. Въведете масив от 10 книги, като използвате горната функция.
 
