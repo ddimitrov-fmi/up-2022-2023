@@ -136,8 +136,8 @@ int main()
 
      Dog* dog2 = new Dog;
     std::cin.getline(dog2->name, 32);
-    std::cin.getline(dog->breed, 32);
-    std::cin >> dog->age;
+    std::cin.getline(dog2->breed, 32);
+    std::cin >> dog2->age;
 
     delete dog2;
 
