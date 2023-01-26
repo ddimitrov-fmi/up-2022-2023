@@ -53,7 +53,7 @@ cout << student_one.name << endl;
 ```c++
 
 Student student_one;
-Student student_two = student_two;
+Student student_two = student_one;
 
 ```
 Но за да работим със структурите ефективно трябва да дефинираме и други функции, като например функция:

@@ -109,9 +109,7 @@ void printArray(const int arr[], int size)
 {
 	for (int i = 0; i < size; i++)
 	{
-		std::cout << arr[0] << " ";
-
-		if (i % 50 == 0) std::cout << std::endl;
+		std::cout << arr[i] << " ";
 	}
 
 	std::cout << std::endl;
